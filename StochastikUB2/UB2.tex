@@ -1,0 +1,85 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+
+
+\setlength{\parindent}{15pt}
+
+\def\mathify#1{\ifmmode{#1}\else\mbox{$#1$}\fi} % guarantee math mode
+\newcommand{\ceil}[1]{\mathify{\left\lceil {#1}\right\rceil}}
+
+
+\title{Übungsblatt 2}
+\author{Richardo Adrian Budianto  583669 \and Junhyuk Ko  531806 \and Ali Bektas 588063 }
+
+\begin{document}
+\maketitle
+
+\section*{Aufgabe 7}
+\textbf{a)}
+\[   \sum_{k=0}^{n} \binom{n}{k}^2 = \binom{2n}{n} \]
+
+Betrachte :
+\[ (1+x)^{2n} = (1+x)^n (1+x)^n= \sum_{k=0}^{2n} \binom{2n}{k}x^k1^{2n-k} \]
+
+Wir wollen nun aus $ (1+x)^n (1+x)^n $ und  $ \sum_{k=0}^{2n} \binom{2n}{k}x^k1^{2n-k}$ nur die Koeffizienten , die vor $x^n$ stehen , herausziehen , woraus sich folgendes ergibt:
+
+\[ 
+\binom{n}{0}\binom{n}{n}x^0x^n + 
+\binom{n}{1}\binom{n}{n-1}x^1x^{n-1} +
+\binom{n}{2}\binom{n}{n-2}x^2x^{n-2} + 
+\dots +
+ \binom{n}{n}\binom{n}{0}x^nx^0  =  \binom{2n}{n}x^n\]
+
+Da $\binom{n}{k} = \binom{n}{n-k} $ ist , kann man die Formel  umschreiben zu :
+
+\[ \binom{n}{0}\binom{n}{0}x^0x^n + \\
+\binom{n}{1}\binom{n}{1}x^1x^{n-1} + \\
+\binom{n}{2}\binom{n}{2}x^2x^{n-2} + \dots + \binom{n}{n}\binom{n}{n}x^nx^0 \]
+
+Wir setzen letztendlich $x = 1$ und dabei erhalten:
+
+
+\[\binom{n}{0}^2 + \binom{n}{1}^2 + \dots + \binom{n}{n}^2 =  \binom{2n}{n}  \]
+\[\sum_{k=0}^{n}\binom{n}{k}^2 = \binom{2n}{n} \]
+
+\textbf{b)}
+\begin{align*} 
+(1+x)^n &= \sum_{k=0}{n}\binom{n}{k}x^k1^{n-k} \\
+((1+x)^n)' = n(1+x)^{n-1} &= \sum_{k=1}^{n}k\binom{n}{k}x^{k-1}1^{n-k+1} \\
+\end{align*} 
+
+x=1 einsetzen.
+\[ n\cdot2^{n-1} = \sum_{k=1}^{n}k\binom{n}{k}\]
+\vspace{20px}
+\section*{Aufgabe 8}
+Nenne X : "\textit{Anzahl der defekten Chips}". Dann:
+\begin{flalign*}
+&(X \geq 3) = 1 - (X < 3) =\\ 
+&1 - (\binom{100}{0}\cdot(0.01)^0\cdot(0.99)^{100}+\binom{100}{1}\cdot(0.01)^1\cdot(0.99)^{99}+\binom{100}{2}\cdot(0.01)^2\cdot(0.99)^{98} \\
+&= 0.07937320\dots\\ 
+\end{flalign*}
+\vspace{20px}
+\section*{Aufgabe 9}
+
+\textbf{a)}Eine typische hypergeometrische Wahrscheinlichkeitsaufgabe
+\begin{align*}
+\textbf{a)}
+(X\leq2) = \frac{\sum_{i=0}^{2}\binom{16}{i}\cdot\binom{384}{25-i}}{\binom{400}{25}} 
+\end{align*}
+\textbf{b)}
+\begin{align} 
+\frac{\frac{384!}{359!\cdot25!}+16\cdot\frac{384!}{360!\cdot24!}+\frac{16\cdot15}{2}\cdot\frac{384!}{361!\cdot23!}}{\frac{400!}{375!\cdot25!}} &=\\
+\frac{384!\cdot375!\cdot25!}{359!\cdot25!\cdot400!} \cdot (1 + \frac{16\cdot25}{360} + \frac{16\cdot25\cdot15\cdot24}{2\cdot360\cdot361}) &=\\
+\frac{\sqrt{2\cdot\pi\cdot384}\cdot(\frac{384}{e})^{384}\cdot\sqrt{2\cdot\pi\cdot375}\cdot(\frac{375}{e})^{375}}
+	{{\sqrt{2\cdot\pi\cdot359}\cdot(\frac{359}{e})^{359}\cdot\sqrt{2\cdot\pi\cdot400}\cdot(\frac{375}{e})^{400}}} &=\\
+\sqrt{\frac{384\cdot375}{359\cdot400}}\cdot(\frac{384}{359})^{359}\cdot(\frac{384}{400})^{25}\cdot(\frac{375}{400})^{375} &=\\
+0.92968\dots
+\end{align}
+
+\textbf{c)}
+\begin{align*} 
+\sum_{n=0}^{2} (\binom{25}{n} \cdot (\frac{16}{400})^{n}\cdot (1-\frac{16}{400})^{25-n}) &= \\
+&= 0.9235
+\end{align*}
+\end{document}  
