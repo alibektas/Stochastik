@@ -1,0 +1,101 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+
+
+\setlength{\parindent}{15pt}
+
+\def\mathify#1{\ifmmode{#1}\else\mbox{$#1$}\fi} % guarantee math mode
+\newcommand{\ceil}[1]{\mathify{\left\lceil {#1}\right\rceil}}
+\newcommand{\floor}[1]{\mathify{\left\lfloor {#1}\right\rfloor}}
+
+\title{Übungsblatt 3}
+\author{Richardo Adrian Budianto  583669 \and Junhyuk Ko  531806 \and Ali Bektas 588063 }
+
+\begin{document}
+\maketitle
+
+
+
+\section*{Aufgabe 12}
+\subsection*{a)}
+\[ P(B_i | A_k) = \binom{k}{i} p^i (1-p)^{k-i}  \]
+\subsection*{b)}
+\[  P(B_i | A_k) \cdot P(A_k) =  \binom{k}{i} p^i (1-p)^{k-i} \frac{\lambda^k}{k!}*e^{-\lambda}  \]
+\subsection*{c)}
+\[ \sum_{k=1}^{\infty} \binom{k}{i} p^i (1-p)^{k-i} \frac{\lambda^k}{k!}*e^{-\lambda}  \]
+
+\section*{Aufgabe 13}
+\begin{align*}
+(i \geq 1) &= \binom{n}{i} \frac{n}{N}^i (1-\frac{n}{N})^{n-1}\\
+1 - (i=0) &= 1 - \binom{n}{0}(\frac{n}{N}^0)(1-\frac{n}{N})^n\\
+ 	&= 1 - (1 - \frac{n}{N})^n\\
+\end{align*}
+
+\section*{Aufgabe 14}
+\subsection*{Idee:}
+Es sind mindestens zwei Würfe notwendig um davon zu reden , was die Wahrscheinlichkeit für den Gewinn von Spieler A in der kommenden Runde. Die Wahrscheinlichkeit dafür ist davon abhängig , dass das Spiel bisher unentschieden ist. Im Antritt von zwei Spielern kommen verschiedene Muster vor , von denen die Unentschiedenheit abhängig ist. Wir untersuchen zunächst das Verhalten von unentschiedenen Spielen. 
+
+Sei $1:= z $ und $0:= w $.\\
+Sei die erste Runde die Runde , in der die Münze zum dritten Mal geworfen ist.\\
+Sei $x \subset \{0,1\}^{*}$ die Binärstring der Münzwürfe.\\
+
+Definiere $P(x \neq A , x\neq B | x = y01 , x = y00) := $ Die Wkt ,  x ist nicht die Binärstring die vom Spieler A gewählt ist und x ist nicht die vom B gegeben x endet mit 01 oder 00. 
+
+	
+\subsection*{a)}
+zzw gegen wzz $\implies$ 110 gegen 011
+
+\[
+P(x \neq 110 , x \neq 011 | x = y11) = \frac{\{\textbf{11}1\}}{2} = \frac{1}{2} 
+\]
+\[
+P(110  gewinnt) = \frac{1}{8} \cdot \sum_{i=0}^{\infty} \frac{1}{2}^i = \frac{1}{4} \\ 
+\]
+
+\subsection*{b)}
+011 gegen 001
+
+\begin{align}
+P(x \neq 011 , x \neq 001 | x = y01) &= \frac{\{\textbf{10}1\}}{2} = \frac{1}{2} \\
+P(x \neq 011 , x \neq 001 | x = y10) &= \frac{\{\textbf{11}0,\textbf{01}0\}}{2} = 1\\
+P(x \neq 011 , x \neq 001 | x = y11 , x = y01) &= \frac{\{\textbf{11}1,\textbf{10}1\}}{4} = \frac{1}{2}\\
+P(x \neq 011 , x \neq 001 | x = y11 , x = y10) &= \frac{\{\textbf{11}1,\textbf{11}0,\textbf{01}0\}}{4} = \frac{3}{4}
+\end{align}
+
+Hier hören wir auf da die Präfixe 11 und 01 von (4) uns auf (3) zurückführen. 
+
+\begin{align}
+P(Gewinn) &= \frac{1}{8} + \frac{1}{8} \frac{1}{2} + \frac{1}{8}\frac{1}{2}\cdot 1 + \frac{1}{8}\frac{1}{2}\cdot 1 \cdot \frac{1}{2} + \frac{1}{8}\frac{1}{2}\cdot 1 \cdot \frac{1}{2} \frac{3}{4} \\
+&= \dots +  \frac{1}{8}\frac{1}{2}\cdot 1 \cdot \frac{1}{2} \frac{3}{4} \dots \frac{1}{2} \frac{3}{4} \cdot \frac{1}{2} \frac{3}{4} \dots \\
+&= \sum_{i=1}^{\infty} \frac{1}{8}_{i-1_+} \cdot \frac{1}{2}_{i-2_+} \cdot 1_{i-3_+} \cdot \frac{1}{2}^{\floor{\frac{i-3}{2}}} \cdot \frac{3}{4}^{\ceil{\frac{i-3}{2}}}
+\end{align}
+
+
+
+\subsection*{c)}
+wwz gegen zww $\implies$ 001 gegen 100
+
+
+\begin{align*}
+P(x \neq 001 , x \neq 100 | x = y00) &= \frac{ \{ \textbf{00}0 \} }{ 2 } = \frac{1}{2} 
+\end{align*}
+
+\[ P(Gewinn) =  \frac{1}{8}  \sum_{i=0}^{\infty} \frac{1}{2} = 0.25 \]
+
+\subsection*{d)}
+zww gegen zzw $\implies$ 100 gegen 110
+
+
+\begin{align*}
+P(x \neq 100 , x \neq 110 | x = y10) &= \frac{ \{ \textbf{01}0 \} }{ 2 } = \frac{1}{2} \\
+P(x \neq 100 , x \neq 110 | x = y01) &= \frac{ \{ \textbf{10}1 , \textbf{00}1 \} }{ 2 } = 1\\
+P(x \neq 100 , x \neq 110 | x = y10 , x = y00) &= \frac{ \{ \textbf{01}0 , \textbf{00}0 \} }{ 4 } = \frac{1}{2}\\
+P(x \neq 100 , x \neq 110 | x = y01 , x = y00) &= \frac{ \{ \textbf{00}1 , \textbf{10}1 , \textbf{00}0 \} }{ 4 } = \frac{3}{4}
+\end{align*}
+
+P(Gewinn) ist derselbe wie in (a).
+
+
+
+\end{document}  
