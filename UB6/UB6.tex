@@ -1,0 +1,90 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+
+
+\setlength{\parindent}{15pt}
+
+\def\mathify#1{\ifmmode{#1}\else\mbox{$#1$}\fi} % guarantee math mode
+\newcommand{\ceil}[1]{\mathify{\left\lceil {#1}\right\rceil}}
+\newcommand{\floor}[1]{\mathify{\left\lfloor {#1}\right\rfloor}}
+
+\title{Übungsblatt 6}
+\author{Richardo Adrian Budianto  583669 \and Junhyuk Ko  531806 \and Ali Bektas 588063 }
+
+\begin{document}
+\maketitle
+
+\section*{Aufgabe 18}
+	\begin{align*}
+		Var(\bar{X}) &= \\
+		&= Var(\frac{1}{n} \cdot (X_1 + \dots + X_n))\\
+		&= \frac{1}{n^2} (Var(X_1+ \dots + X_n)) \\
+	 	&=  \frac{1}{n^2} (Var(X_1) + Var(X_2) + \dots + Var(X_n)
+	\end{align*} 
+
+	\begin{align*}
+		E(\bar{X}) &= E( \frac{1}{n} (X_1 + X_2 + \dots + X_n)) \\
+			&= \frac{1}{n} \dot E(X_1 + \dots + X_n)\\
+			&=  \frac{1}{n} \dot ( E(X_1) + \dots + E(X_n))
+	\end{align*}
+
+	\subsection*{a)}
+		$Var(\bar{X}) = \frac{1}{12n}$
+		$E(\bar{X}) = \frac{1}{2}$
+
+	\subsection*{b)}
+		$Var(\bar{X}) = \frac{1}{\lambda^2n}$
+		$E(\bar{X}) = \lambda$
+
+	\subsection*{c)}
+		$Var(\bar{X}) = \frac{\sigma^2}{n}$
+		$E(\bar{X}) = \mu$
+
+\section*{Aufgabe 19}
+	\begin{align*}
+		X_i - \bar{X} &= X_i - \mu + \mu - \bar{X} \\
+		(X_i - \bar{X})^2 &= ((X_i - \mu + \mu - \bar{X}))^2 \\
+		&= (X_i - \mu)^2 + 2(X_i - \mu)(\mu - \bar{X}) + (\mu - \bar{X})^2
+	\end{align*}
+	\begin{align*}
+		\sum(X_i - \bar{X})^2 &= \sum(X_i - \mu)^2 + \sum 2 \cdot (X_i - \mu)(\mu - \bar{X}) + \sum(\mu - \bar{X})^2\\
+		&= \sum(X_i - \mu)^2  + n \dot \sum(\mu - \bar{X})^2 + 2 \sum  \cdot (X_i - \mu)(\mu - \bar{X}) \\
+		&= \underbrace{\sum(X_i - \mu)^2}_{:=a} + n ( \mu - \bar{X})^2 + 2(\mu - \bar{X})\sum(X_i - \mu) \\
+		&= a + 2(\mu - \bar{X})(n \cdot \bar{X} - n \mu)\\
+		&= a - 2n (-\mu + \bar{X})(\bar{X} - \mu)\\
+		&= a - 2n(\bar{X} - \mu)(\bar{X} - \mu)\\
+		&= a - 2n(\bar{X} - \mu)^2 \Rightarrow \sum(X_i - \mu)^2 -n(\mu -\bar{X} )^2
+	\end{align*}
+
+	\begin{align*}
+		E(s_n^2)&= E[\frac{1}{n-1}\sum(X_i - \bar{X})^2] \\
+		&= \frac{1}{n-1} E[\sum(X_i -\bar{X})^2] \\
+		&=	\frac{1}{n-1} [\sum E(\underset{\sigma^2}{(X_i-\mu)^2}) - nE(\underset{\frac{\sigma^2}{n}}{\mu-\bar{X}^2})]\\
+		&= \frac{1}{n-1}[n \cdot \sigma^2 - n \cdot \frac{\sigma^2}{n}]\\
+		&= \sigma^2 = Var
+	\end{align*}
+
+\section*{Aufgabe 20}
+	\subsection*{a)}
+		\begin{align*}
+			P(X\leq 69)&= P(Z \leq \frac{69 - 70}{2}) = P(Z \leq -\frac{1}{2})\\
+			&= 0.5 - P(0 \leq Z \leq \frac{1}{2})\\
+			&= 0.5 - 0.1915 \\
+			&= 0.3085\\
+			P(x \geq 73) &= P(Z \geq \frac{73-70}{2}) = P(Z \geq 1.5)\\
+				&= 0.5 - P(0 \leq Z \leq 1.5)\\
+				&= 0.0668
+		\end{align*}
+	\subsection*{b)}
+		\begin{align*}
+			P(X_\mu \leq 70) \leq 0.1 &\iff P(Z \leq \frac{X_\mu - 70}{\sigma}) \leq 0.1\\
+			&\iff P(Z \leq \frac{X_\mu -70}{2}) \leq 0.1 \\
+			&\iff [0.5 - P(0\leq Z \leq \frac{X_\mu -70}{2})] \leq 0.1 \\
+			& \frac{X_\mu - 70}{2} = 1.29 \\
+			& X_\mu = 72.58
+		\end{align*}
+
+
+
+\end{document}  

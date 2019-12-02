@@ -1,0 +1,75 @@
+\documentclass{article}
+
+\usepackage{amstmath}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+
+\begin{document}
+	
+	\section*{Aufgabe 18}
+		$\bar{X} = \frac{1}{n} \cdot (X_1 +X_2 + \cdots + X_n)$. Bestimme Erwartungswert und Varianz von \bar{X} :
+
+
+	\subsection*{Allgemeines Wissen}
+		\begin{definition}{p-tes zentrales Moment}
+			\[
+				\textbf{E}X^p = 
+					\begin{cases} 
+						\int_{-\infty}^{infty} x^p \dot f(x) dx &, X stetig \\
+						\sum_{i\in \mathbb{N}} x_i^p \dot p_i &, X diskret.
+					\end{cases}
+			\]
+		
+		2-tes Moment heißt \textbf{Varianz}.
+		\end{definition}
+		\begin{theorem}
+			\[
+				X_1 \text{und} X_2 \text{unabhängig} \rightarrow cov(X_1 , X_2) = 0
+			\]
+		\end{theorem}
+
+		Also folgt 
+
+		\begin{align*}
+			Var(X_1 + X_2) &= Var(X_1) + Var(X_2) + 2 \cdot cov(X_1 ,X_2)\\
+							&= Var(X_1) + Var(X_2)
+		\end{align*}
+
+
+		\subsubsection*{Wie werden Erwartungswerte aufsummiert?}
+			\[
+				E(a \cdot X_1 + b \cdot X_2) = a \cdot \textbf{E} X_1 + b \cdot \texbf{E}X_2
+			\]
+
+	\subsection*{a) $X_i$ auf (0,1) geleichverteilt sind}
+		\subsubsection*{Wie wird Gleichverteilung definiert?}
+			\begin{definition}{Gleichverteilung}
+				$X \~ R(a,b)$.X hat die Dichtefunktion:
+
+				\[
+					\begin{cases} 
+						0 &, falls x<a\\
+						\frac{1}{b-a} &, falls a \leq  x < b\\
+						0 &, falls x \geq b
+
+				\]
+			\end{definition}
+
+			
+		\subsubsection*{Wie wird ihr Erwartungswert definiert?}
+			\begin{definition}{Erwartungswert $X$ stetig}
+				\textbf{E}X = \int_{-\infty}^{\infty}x \dot f(x) dx
+			\end{definition}
+		Also :
+			\begin{align*}
+				EX &= \frac{1}{b-a}\int_{a}^{b}xdx \\ &= \frac{b^2 - a^2}{2(b-a)}\\ &= \frac_{a+b}{2}
+			\end{align*}
+
+
+
+\end{document}

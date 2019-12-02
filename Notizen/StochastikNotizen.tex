@@ -1,0 +1,119 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage[toc , page ]{appendix}
+\usepackage{hyperref}
+	\hypersetup{
+	    colorlinks=false,
+	    linkcolor=blue,
+	    filecolor=green,      
+	    urlcolor=red,
+	}
+	\urlstyle{same}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+
+\begin{document}
+
+\section{Charakteristika von Verteilungsfunktionen}
+
+\subsection{Moment und Varianz}
+
+	\begin{example}{Normalverteilung}
+		\begin{align*}
+			&= \frac{\sigma^2}{\sqrt{2\pi}}(-te^{-\frac{t^2}{2}|_{-infty}^{infty}} - \int_{-\infty}^{\infty}(-1)e^{-\frac{t^2}{2}}dt)\\
+			&= \frac{\sigma^2}{\sqrt{2\pi}} \int_{-\infty}{\infty}e^{-\frac{t^2}{2}}dt\\
+			&= \sigma^2.
+		\end{align*}
+		Bei Normalverteilung sind also die Parameter $\mu$ und $\sigma^2$ Erwartungswert und Varianz.
+	\end{example}
+
+\subsection{Charakteristische Funktionen}
+	Nützlich beim Zentralen GWS.
+
+	Sei X Zufallsvariable \ref{random_variable} mit Dichtefunktion $f_X$ fall(X stetig) oder Wkt.funktion $p_j$ (falls X diskret).
+	\begin{definition}{Charakteristische Funktion von X}
+		\[
+			\phi_X(t) := \textbf{E}e^{itX} = 
+					\begin{cases}
+						\int_{-\infty}^{\infty}e^{itx}f_X(x)dx  &, \text{falls X stetig}\\
+						\sum_{j=1}^{\infty}e^{itx_j}p_j &, \text{falls X diskret}.
+					\end{cases}
+		\]
+	\marginpar{Die Funktion $\phi_X(t)$ ist die Fourier-Transformierte von $f_X$}
+
+	\end{definition}
+
+	\begin{theorem}
+		\begin{enumerate}
+			\item $\phi_X(t)$ ist in $-\infty < t < \infty$ gleichmäßig stetig.
+			\item Die Zufallsvariable $Y = aX + b$ hat die char. Funktion
+				\[
+					\phi_Y(t) = \phi_X(at)e^{ibt}
+				\]
+			\item $\phi_X(t)$ ist reelwertig $\iff$ X bzgl. x=0 symmetrisch ist.
+		\end{enumerate}
+	\end{theorem}
+
+	\begin{theorem}{Multiplikationssatz}
+		Seien die Zufallsvariablen $X_1$ und $X_2$ unabhängig mit den charakteristischen Funktionen $\phi_1$ und $\phi_2$. Dann hat die Zufallsvariable $X_1 + X_2$ die charakteristische Funktion $\phi_1 \cdot \phi_2$.
+	\end{theorem}
+	\begin{proof}
+		\[
+			\phi_{X_1 + X_2}(t) = \textbf{E}e^{it(X_1+X_2)} = \textbf{E}e^{itX_1} \cdot \textbf{E}e^{itX_2}
+		\]
+	\end{proof}
+
+	\begin{theorem}{Eindeutigkeitssatz}
+		Die Beziehung $F_x \iff \phi_X$ ist eineindeutig. Für X stetig gilt:
+
+		\[
+			f_X(x) = \frac{1}{2\pi}\int_{-\infty}^{\infty}e^{-itx}\phi_X(t)dt
+		\]
+
+		Für X diskret gilt:
+
+		\[
+			p_j = \lim_{T \to \infty} 
+		\]
+	\end{theorem}
+
+	\begin{theorem}{Konvergenzsatz}
+		Seien $X_n$ Zufallsvar. mit $X_n \~ F_n$. \marginpar{What does this mean?} Dann gilt :
+			\[
+				F_n \rightarrow F \iff \phi_n \rightarrow \phi , \phi \text{stetig in } t = 0.
+ 			\]
+ 	\end{theorem}
+
+ 	Wozu brauchen wir char. Fkt?
+
+ 	Die Summe von unabhängigen , identische verteilten Zufallsgrößen ist (oft) asymptotisch normalverteilt.
+
+ 	\begin{itemize}
+ 		\item char. Fkt der Summe (Multiplikationssatz)
+ 		\item diese konvergiert gegen char. Funk. der Normalverteilung
+ 		\item Konvergenz der Summe folgt aus dem Konvergenzsatz
+ 	\end{itemize}
+
+ 	\begin{theorem}{Erzeugung der Momente}
+ 	Sei $\textbf{E}X^k < \infty$. Dann gilt:
+ 		\[
+ 			a_k := \textbf{E}X^k = \frac{1}{i^k}\phi_X^{(k)}(0)
+ 		\]
+
+ 	Die char Fkt hat also die Taylor-Entwicklung
+
+ 		\[
+ 			\phi_X(t) = \textbf{E}e^{itX} = \sum_{j=0}^{k}a_j \frac{(it)^j}{j!} + o(t^k) , t \rightarrow 0.
+ 		\]
+ 	\end{theorem}
+
+
+\end{document}
