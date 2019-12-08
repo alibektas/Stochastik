@@ -1,0 +1,109 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Übungsblatt 7}
+\author{Richardo Adrian Budianto  583669 \and Junhyuk Ko  531806 \and Ali Bektas 588063 }
+
+
+
+\begin{document}
+	
+	\maketitle
+
+	\section*{Aufgabe 21}
+
+	\subsection*{a)}
+		Finden Sie $ X = max\{ T_1 , \dots , T_n \}$. 
+
+		Um Max zu untersuchen fragt man jedesmal nach der Wkt dass alle Zufallsvariablen Werte weniger als t haben.
+
+		\begin{align*}
+			P(X \leq t) &= P( T_1 \leq t) \cdot P(T_2 \leq t) \dots P(T_n \leq t)\\
+			&= (1-e^{-\lambda_1t})\cdot (1-e^{-\lambda_2t}) \dots \cdot (1-e^{-\lambda_nt})\\
+			&= \prod_{i=1}^{n} e^{\lambda_i \cdot t}
+		\end{align*}
+	\subsection*{b)}
+		Finden Sie $ Y = min\{ T_1 , \dots , T_n \}$. 
+
+		\begin{align*}
+			P(Y \geq t) &= P(T_1 \geq t) \cdot P(T_2 \geq t) \dots \cdot P(T_n \geq t) \\
+			&= (1- P(T_1 \leq t)) \cdot (1-P(T_2 \leq t)) \dots \cdot (1-P(T_n \leq t)) \\
+			&= \prod_{i=1}^{n} e^{-\lambda_i \cdot t}
+		\end{align*}
+
+		Beachte dass sich daraus ergibt dass Y wieder exponentialverteilt ist. Dementsprechend ist $E(Y)$
+
+		\[
+			Y = e^{-t(\sum_{i=1}^{n} \lambda_i)}  \rightarrow  E\textbf{Y} = \frac{1}{\sum_{i=1}^{n} \lambda_i}
+		\]
+
+	\subsection*{c)}
+		\[
+			E\textbf{X} = E[max\{T_1, \dots , T_n\}] = E\textbf{T}_1 = \frac{1}{\lambda} 
+		\]
+
+	\subsection*{d)}
+		\begin{align*}
+			P(X \leq 15) &= (1 - e^{-\frac{1}{20}})^5 \\
+				&= (1-e^{-3}{4})^5 \\
+				&\approx  0.0408\\
+			P(Y \leq 15) &= (1- e^{-5 \cdot \frac{1}{20} \cdot 15})\\
+			 	&= 1 - e^{-15}{4} 
+			 	&\approx 0.9764 
+		\end{align*}
+			
+	\section*{Aufgabe 22}
+
+	\subsection*{a)}
+		Da \textit{exp} überall differenziebar ist und $(e^x)' \neq 0 $ , ist ln auch differenzierbar.Somit ist g differenzierbar. Deshalb darf man den Transformationssatz anwenden.
+
+		\begin{align*}
+			h(y) &= \frac{f(g^{-1}(y))}{|g'(e^{-\lambda y})|} \\
+			&= \frac{f(e^{-\lambda y})}{|-\frac{1}{\lambda \cdot e^{-\lambda y}|}}\\
+		\end{align*}
+		
+		Bevor wir die endgültige Antwort liefern brauchen wir zu untersuchen wann $f(x) = 1$ gilt.
+		\begin{align*}
+			O &\leq e^{-\lambda \cdot y} < 1\\
+			ln(0) &\leq -\lambda \cdot y < ln(1)\\
+			-\infty &\leq -\lambda \cdot y < 0\\
+			\infty &> y > 0\\
+		\end{align*}
+
+		Dann gilt:
+
+		\begin{align*}
+			h(y) &= 
+			\begin{cases}
+				\lambda \cdot e^{-\lambda \cdot y} &, \text{falls} y > 0,\\
+				0 &, \text{sonst}.
+			\end{cases} 
+		\end{align*}
+
+	\subsection*{b)}
+
+	\begin{align*}
+		g(U) &= \sqrt{-\frac{1}{\lambda}\cdot ln(U)}\\
+		g^{-1}(y) &= e^{-\lambda \cdot y^2} \\
+		g'(U) &= \frac{1}{2}\cdot\frac{1}{\sqrt{-\frac{1}{\lambda}\cdot ln(U)}} \cdot (-\frac{1}{\lambda U})\\
+		h(y) &= \frac{f(e^{-\lambda y^2})}{|\frac{1}{2} \cdot \frac{1}{\sqrt{-\frac{1}{\lambda}}-\lambda y^2} \cdot (-\frac{1}{\lambda \cdot e^{-\lambda y^2}})|}\\
+	\end{align*}
+
+	Wann gilt $f(x) = 1 $?
+	\begin{align*}
+		0 &\leq e^{-\lambda y^2} < 1\\
+		-\infty &< -\lambda y^2 < 0 \\
+		\infty &> y^2 > 0\\
+		y &> 0
+	\end{align*}
+
+	Dann gilt:
+	\[
+		h(y) = \begin{cases}
+			&2\cdot y \cdot \lambda \cdot e^{-\lambda y^2} , fall y > 0\\
+			& 0 , sonst. 
+		\end{cases}
+	\]
+\end{document}

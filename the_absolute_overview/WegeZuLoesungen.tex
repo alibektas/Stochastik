@@ -1,0 +1,23 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+	
+	In diesem Dokument findet man den Gedankengang.
+
+	\section*{Aufgabe 21}
+
+	\subsection*{a)}
+		Finden Sie $ X = max\{ T_1 , \dots , T_n \}$. 
+
+		\begin{align*}
+			P(X \leq t) &= P( T_1 \leq t) \cdot P(T_2 \leq t) \dots P(T_n \leq t)\\
+			&= (1-e^{-\lambda_1t})\cdot (1-e^{-\lambda_2t}) \dots \cdot (1-e^{-\lambda_nt})\\
+			&= \product e^{\lambda_i \cdot t} 
+	
+		\end{align*}
+
+	
+\end{document}
