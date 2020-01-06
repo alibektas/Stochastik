@@ -1,0 +1,75 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Übungsblatt 9}
+\author{Richardo Adrian Budianto  583669 \and Junhyuk Ko  531806 \and Ali Bektas 588063 }
+
+
+
+\begin{document}
+	
+	\maketitle
+
+	\section*{Aufgabe 25}
+
+	Wir wenden den Transformationssatz an , indem wir Y als die ausgehende Zufallsvariable betrachten und X als die eingehende. 
+
+	\begin{flalign*}
+		&Y \rightarrow X \\
+		&h:Y \rightarrow X\\
+		&h(Y) = e^Y
+	\end{flalign*}
+
+	Wir nennen die Dichte von Y k.Dann
+
+	\begin{flalign*}
+		k(y) &= \frac{f(ln(y))}{|e^{ln (y)}|} \\
+			&= \frac{f(ln (y))}{y}\\
+			&= \frac{1}{\sqrt{2\pi}\sigma}e^{\frac{-1}{2}(\frac{ln(y)-\mu}{\sigma})^2}
+	\end{flalign*}
+	
+	\section*{Aufgabe 26}
+		\subsection*{$n=1$}
+			Das ist klar. Wir erhalten die expontielle Dicte.
+		\subsection*{$n \rightarrow n+1$}	
+
+			\begin{flalign*}
+				f_{Y_{n+1}}(y_1) &= \int \lambda e^{-\lambda(y_1-y_2)} \lambda^k e^{-\lambda y_2}\frac{y_2^{n-1}}{(n-1)!}dy_2\\
+				&= \lambda^{n+1}e^{-\lambda^{y_1}} \int \frac{y_2^{n-1}}{(n-1)!}y_2 \\
+				&= \lambda^{n+1}e^{-\lambda y_1}\frac{y_1^n}{n!}
+			\end{flalign*}
+
+	\section*{Aufgabe 27}
+		\begin{flalign*}
+			P[U \leq V] &= \int P[U\leq V ]f_V(v)dv \\
+			&=\int F_U(v)f_V(v)dv \\
+			&=\int V dv\\
+			&=\frac{v^2}{2}\\
+		\end{flalign*}
+
+	\section*{Aufgabe 28}
+		\begin{flalign*}
+			EX:&\\
+			&\int f_X(x)\cdot x \cdot dx\\
+			&\int(\int_0^2 f(x,y) dy) \cdot x \cdot dx\\
+			&\int(\frac{4y}{3} - \frac{xy}{3} -\frac{y^2}{6} \vert_0^2) x \cdot dx\\
+			&\int(\frac{8}{3}-\frac{2x}{3}-\frac{4}{6})\cdot x \cdot dx \\
+			&\int_1^2 \frac{8x}{3} - {2x^2}{3} - {4x}{6} dx \\
+			& \frac{8x^2}{6} - \frac{2x^3}{9} - \frac{4x^2}{12} \vert_1^2 \\
+			&= \frac{10}{9}
+		\end{flalign*}
+		\begin{flalign*}	
+		EY:&\int f_Y(y)\cdot y \cdot dy\\
+			&=\int(\int f(x,y)dx)\cdot y \cdot dy\\
+			&= \int(\frac{4x}{3}-{x}{3}-{y}{3}dx)\cdot y \cdot dy\\
+			&= \int(\frac{4x}{3} - \frac{x^2}{6} - \frac{xy}{3} \vert_1^2)\cdot y \cdot dy\\
+			&= \int(\frac{5y}{6} - \frac{y^2}{3} dy)\\
+			&=\frac{5y^2}{12} - \frac{y^3}{9} \vert_0^2 \\
+			&= \frac{7}{9} 
+		\end{flalign*}
+
+
+
+\end{document}
