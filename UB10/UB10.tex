@@ -1,0 +1,113 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Übungsblatt 10}
+\author{Richardo Adrian Budianto  583669 \and Junhyuk Ko  531806 \and Ali Bektas 588063 }
+
+
+
+\begin{document}
+	
+	\maketitle
+
+	\section*{Aufgabe 30}
+		\subsection*{a)}
+			\[ \lim_{t_2 \to  \infty } F(t_1 , t_2) = 1 - e^{-(\lambda_1 + \lambda_3 )t_1}  \]
+			\[ \lim_{t_1 \to  \infty } F(t_1 , t_2) = 1 - e^{-(\lambda_2 + \lambda_3 )t_2} \]
+		\subsection*{b)}
+			\subsubsection*{$\rightarrow$}
+				Seien $T_1 , T_2$ unabhängig und exponentialverteilt.
+
+				\begin{flalign*} 
+					F(t_1,t_2) &= F_{T_1}(t_1) * F_{T_2}(t_2)\\
+					&\rightarrow 1- e^{-(\lambda_1 + \lambda_3)t_1} - e^{-(\lambda_2+\lambda_3)t_2} + e^{-\lambda_1t_1 -\lambda_2t_2 -\lambda_3max(t_1,t_2)} = (1-e^{-(\lambda_1 + \lambda_3)t_1})(1-e^{-(\lambda_2+\lambda_3)t_2})\\
+					&=1-e^{-(\lambda_2 + \lambda_3)t_2} - e^{-(\lambda_1 + \lambda_3)t_1} + e^{-\lambda_1t_1-\lambda_3t_1-\lambda_2t_2-\lambda_3t_2}\\
+					&\rightarrow e^{-\lambda_3max(t_1 , t_2) = e^{-\lambda_3(t_1 + t_2)}}  \forall t_1 , t_2 > 0\\
+					&\lambda_3 = 0 
+				\end{flalign*}
+			\subsubsection*{$\leftarrow$}
+				Sei $\lambda_3 = 0$. Wir wollen zeigen : $T_1$ und $T_2$ sind unabhängig und exponentialverteilt.
+				\begin{flalign*}
+					&1-e^{-(\lambda_1)t_1}-e^{-\lambda_2t_2}+e^{-\lambda_1t_1-\lambda_2t_2} =: F(t_1,t_2)\\
+					&\lim_{t_2 \to  \infty } F(t_1 , t_2) * \lim_{t_1 \to  \infty } F(t_1 , t_2) = (1-e^{-\lambda_2t_2})(1-e^{-\lambda_1t_1})\\
+					&= F(t_1 , t_2)
+				\end{flalign*}
+
+	\section*{Aufgabe 31}
+		\subsection*{a)}
+			\begin{center}
+				 \begin{tabular}{||c c c c c c||} 
+					 \hline
+					 X/Y & 1 & 2 & 3 & 4 & $p_{i\cdot}$\\ [0.5ex] 
+					 \hline\hline
+					 -1 & 0 & 0.01 & 0.09 & 0.1 & 0.2 \\ 
+					 \hline
+					 0 & 0.6 & 0.03 & 0.0 & 0.07 & 0.7 \\ 
+					 \hline
+					 1 & 0 & 0.06& 0.01 & 0.03 & 0.1 \\ 
+					 \hline
+					 1 & 0 & 0.06 & 0.01 & 0.3 & 0.1 \\ 
+					 \hline
+					 $p_{\cdot j}$ & 0.6 & 0.1 & 0.1 & 0.2 & 1 \\ [1ex] 
+					 \hline
+				\end{tabular}
+			\end{center}
+		\subsection*{b)}
+			\begin{flalign*}
+				EX &= -1(0.2) + 0 + 1*0.1 = -0.1\\
+				EY &= 1*(0.6) + 2 * (0.1) + 3 *(0.1) + 4* (0.2) = 1.9\\
+			\end{flalign*}
+
+			\[ 
+				XY = \left( 
+					\begin{array}{ccccccccc}
+						-4 & -3 & -2 & -1 & 0 & 1 & 2 & 3 & 4 \\
+						0.1 &  0.09 & 0.01 & 0 & 0.7 & 0 & 0.06 & 0.01 & 0.03 \\
+					\end{array} 
+					\right)
+			\]
+
+			\[
+				EXY = -0.4 -0.27 -0.02+0.12 + 0.03 + 0.12 = -0.42 
+			\]
+
+			\[
+				cov(X,Y) = EXY - EX*EY = -0.23
+			\]
+			
+			\begin{flalign*}
+				\sqrt{\sigma^2_X} &= 0.2(-1+0.2)^2 + (0.7)(0+0.1)^2 + \dots = 0.5385\\
+				\sqrt{\sigma^2_Y} &= 1.22
+			\end{flalign*}
+
+			\[
+				\varrho(X,Y) = \frac{-0.23}{(0.54)(1.22)} = -0.35
+			\]
+
+	\section*{Aufgabe 32}
+		Als Nebenrechnung berechnen wir $E(V^2)$ , was in beiden Teilaufgaben benutzt wird. 
+
+		\[ E(V^2) = \int_0^1 x^2 \dot 1 dx = \frac{1}{3} \]
+
+		\subsection*{a)}
+
+			\begin{flalign*} 
+				cov(UV , V) &= E(UVV) - E(UV)E(V) \\
+				&= E(U)E(V^2) - E(U)E(V)E(V) \\
+				&= \frac{1}{2} * \frac{1}{3} - \frac{1}{8} = \frac{1}{24}\\		
+			\end{flalign*}
+
+		Der Grund warum $E(UVV) = E(U)E(V^2)$ ist , beruht auf dem Satz ,der besagt: Wenn zwei Zufallsgrößen unabhängig sind , so sind alle ihrer Transformierten.
+
+		\subsection*{b)}
+			\begin{flalign*}
+				\sigma_{UV} &= (E(UV - E(UV))^2 = E(U^2V^2 - 2UV*E(UV) + E(UV)^2))^{\frac{1}{2}}\\
+				&= (E(U^2)*E(V^2) -2E(U)*E(V)*E(E(UV)) + E(E(U^2)*E(V^2))^{\frac{1}{2}} \\
+				&= \frac{1}{9}^2  - 2 *\frac{1}{2}^2 *\frac{1}{4} + \frac{1}{9})^{\frac{1}{2}}\\
+				&= 0.312 \\
+				\sigma_{V} &= \frac{1}{\sqrt{12}}\\
+				\varrho(UV,V) &= \frac{\frac{1}{24}}{0.312*\frac{1}{\sqrt{12}}} = 0.463\\
+			\end{flalign*}
+\end{document}
