@@ -1,0 +1,68 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Übungsblatt 11}
+\author{Richardo Adrian Budianto  583669 \and Junhyuk Ko  531806 \and Ali Bektas 588063 }
+
+
+\begin{document}
+	
+	\maketitle
+	\section*{Aufgabe 33}
+		\subsection*{i)}
+			\begin{align*}
+				&1-\Phi(\frac{y-500}{\sqrt{250}}) < 0.01\\
+				&-\Phi(\frac{y-500}{\sqrt{250}}) < -0.99\\
+				&\Phi(\frac{y-500}{\sqrt{250}}) > 0.99\\
+				&\Rightarrow \frac{y-500}{\sqrt{250}} > 2.33\\
+				&y>536
+			\end{align*}
+		\subsection*{ii)}
+			\begin{align*}
+				&1-\Phi(\frac{510-500}{\sqrt{1000*0.25}})\\
+				&1-\Phi(0.63)\\
+				&1-0.735\\
+				&0.265
+			\end{align*}
+		\subsection*{iii)}
+			Sei X der erste Zug und Y der zweite.
+			\begin{align*}
+				&P(X>536 , Y>550)=\\
+				&P(X>536 \lor X \leq 450)=\\
+				&=1-\Phi(\frac{536-500}{\sqrt{250}})+\Phi(\frac{450-500}{\sqrt{(250)}})\\
+				&=1-0.9885-0.00079\\
+				&=0.01071
+			\end{align*}
+	\section*{Aufgabe 34}
+		\subsection*{i)}
+			\begin{align*}
+				&n \geq (\frac{\sqrt{6.25}\Phi^{-1}(1-0.1)}{0.1})^2\\
+				&n \geq (\frac{(2.5)(1.28)}{0.1})^2\\
+				&n \geq 1024
+			\end{align*}
+		\subsection*{ii)}
+			\begin{align*}
+				&P(|Y-EY|\geq \epsilon ) \leq \frac{\text{Var }Y}{\epsilon^2}\\
+				&\rightarrow 1-P(|Y-EY|\geq \epsilon) \geq 1 - \frac{\text{Var }Y}{\epsilon^2}\\
+				&\rightarrow 1-P(|Y-EY|\geq \epsilon) \geq 1 - \frac{6.25}{n*\epsilon^2} \geq 0.9\\
+				&n\geq 6250
+			\end{align*}
+
+	\section*{Aufgabe 35}
+		\[
+			\prod^n_{i=1} f_{X_i}(x_i) = 
+					\begin{cases} 
+						\frac{1}{(b-a)^n} ,&falls 0\leq x_i \leq b \forall x_i\\
+						0 ,&sonst.
+					\end{cases}
+		\]
+
+		Setze $\theta := b-a $. Dann gilt für ML-Schätzungen 
+
+		\[
+			a  : min(x_1 , \dots , x_n)\\
+			b  : max(x_1 , \dots , x_n)
+		\] 
+\end{document}
